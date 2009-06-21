@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Idle Timer Example</title>
+    <script type="text/javascript" src="http://yui.yahooapis.com/combo?3.0.0pr2/build/yui-base/yui-base-min.js&3.0.0pr2/build/oop/oop-min.js&3.0.0pr2/build/event/event-min.js&3.0.0pr2/build/dom/dom-base-min.js&3.0.0pr2/build/dom/selector-min.js&3.0.0pr2/build/node/node-base-min.js"></script></head>
+    <script type="text/javascript" src="idle-timer.js"></script>
+<body>
+    <h1>Idle Timer Example</h1>
+    <p>The idle timer is built on <a href="http://developer.yahoo.com/yui/3/">YUI 3</a> and provides two events: <code>idle</code> and <code>active</code>, which fire when the user's idle state has changed.</p>
+    <p>This example has an idle timeout of 10 seconds. When you move your mouse over the page or start typing, you're considered "active". The status at the top of the screen changes to indicate your current state.</p>
+    <div id="status" style="padding: 5px;">&nbsp;</div>
+    <form>
+        <label for="comment">Comment:</label><br />
+        <textarea rows="10" cols="30" id="comment" name="comment"></textarea><br />
+        <input type="submit" value="Submit" />
+    </form>
+
+
+    <script type="text/javascript">
+    
+    YUI().use("*", function(Y){
+    
+        Y.IdleTimer.subscribe("idle", function(){
+            Y.get("#status").set("innerHTML", "User is idle :(").set("style.backgroundColor", "silver");
+        });
+        
+        Y.IdleTimer.subscribe("active", function(){
+             Y.get("#status").set("innerHTML", "User is active :D").set("style.backgroundColor", "yellow");
+        });
+        
+        Y.IdleTimer.start(10000);
+    });
+    
+    </script>
+</body>
+</html>
