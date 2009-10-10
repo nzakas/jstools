@@ -1,5 +1,5 @@
-FireUnit Extension for YUI Test v0.1
-Copyright 2008 Nicholas C. Zakas. All Rights Reserved.
+FireUnit Extension for YUI Test v0.2
+Copyright 2008-2009 Nicholas C. Zakas. All Rights Reserved.
 Licensed under a BSD License (see source code file)
 
 Basic Usage:
@@ -12,3 +12,11 @@ Basic Usage:
 4) Run your tests:
 
     YAHOO.tool.TestRunner.run();
+        
+History:
+
+0.2
+  * Updated with grouping functionality for FireUnit 1.0a3
+    
+0.1
+  * Initial release.

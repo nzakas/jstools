@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, Nicholas C. Zakas. All rights reserved.
+ * Copyright (c) 2008 - 2009 Nicholas C. Zakas. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -25,7 +25,7 @@
  */
 
 /**
- * FireUnit extension for YUI Test.
+ * FireUnit extension for YUI Test. Requires at least FireUnit 1.0a3.
  * @module yuitest-fireunit
  */
 /**
@@ -43,6 +43,16 @@ YAHOO.tool.FireUnit = function(){
                 break;
             case "fail":
                 fireunit.ok(false, event.testName + "failed: " + event.error.getMessage());
+                break;
+            case "testsuitebegin":
+                fireunit.group(event.testSuite.name);
+                break;            
+            case "testcasebegin":
+                fireunit.group(event.testCase.name);
+                break;                
+            case "testsuitecomplete":
+            case "testcasecomplete":
+                fireunit.groupEnd();
                 break;
             case "complete":
                 fireunit.testDone();
@@ -63,6 +73,10 @@ YAHOO.tool.FireUnit = function(){
             testRunner.subscribe("pass", handleEvent);
             testRunner.subscribe("fail", handleEvent);
             testRunner.subscribe("complete", handleEvent);
+            testRunner.subscribe("testsuitebegin", handleEvent);
+            testRunner.subscribe("testsuitecomplete", handleEvent);
+            testRunner.subscribe("testcasebegin", handleEvent);
+            testRunner.subscribe("testcasecomplete", handleEvent);
         },
         
         /**
@@ -76,6 +90,10 @@ YAHOO.tool.FireUnit = function(){
             testRunner.unsubscribe("pass", handleEvent);
             testRunner.unsubscribe("fail", handleEvent);
             testRunner.unsubscribe("complete", handleEvent);
+            testRunner.unsubscribe("testsuitebegin", handleEvent);
+            testRunner.unsubscribe("testsuitecomplete", handleEvent);
+            testRunner.unsubscribe("testcasebegin", handleEvent);
+            testRunner.unsubscribe("testcasecomplete", handleEvent);            
         }
     };
 
