@@ -36,6 +36,13 @@
  */
 YAHOO.tool.FireUnit = function(){
 
+    /*(intentionally not documented)
+     * Handles testrunner events and calls the appropriate
+     * FireUnit API methods to output information to the
+     * FireUnit console.
+     * @param {Object} event The TestRunner event object.
+     * @return {Void}
+     */
     function handleEvent(event){
         switch(event.type){
             case "pass":
