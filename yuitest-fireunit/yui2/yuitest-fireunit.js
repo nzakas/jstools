@@ -41,8 +41,12 @@ YAHOO.tool.FireUnit = function(){
             case "pass":
                 fireunit.ok(true, event.testName + " passed.");
                 break;
-            case "fail":
-                fireunit.ok(false, event.testName + "failed: " + event.error.getMessage());
+            case "fail":            
+                if (event.error instanceof YAHOO.util.ComparisonFailure){
+                    fireunit.ok(false, event.testName + "failed: " + event.error.message, event.error.expected, event.error.actual);
+                } else {            
+                    fireunit.ok(false, event.testName + "failed: " + event.error.message);
+                }
                 break;
             case "testsuitebegin":
                 fireunit.group(event.testSuite.name);

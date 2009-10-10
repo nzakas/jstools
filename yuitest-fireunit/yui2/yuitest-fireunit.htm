@@ -14,7 +14,7 @@
 <p><input type="button" value="Run Tests" id="btnRun" /></p>
 <p style="width:50%">The results for the unit tests will be output into the <a href="http://www.fireunit.org">FireUnit</a> console. You must
 have FireUnit installed for this example to work. FireUnit requires Firefox 3+ and Firebug 1.2+. The logger
-is included to show the normal YUI Test output.</p>
+is included to show the normal YUI Test output. There are two tests that fail on purpose to show the output from a failed test.</p>
 <script type="text/javascript">
 
 YAHOO.namespace("test");
@@ -342,7 +342,9 @@ YAHOO.test.profiler_test = (function(){
             Profiler.unregisterFunction("testObject.factorial");
 
             Assert.isObject(report, "Report should be an object.");
-            Assert.isNumber(report.calls, "Call count should be a number.");
+            
+            //intentional failure
+            Assert.isObject(report.calls, "Call count should be a number.");
             Assert.isNumber(report.max, "Max should be a number.");
             Assert.isNumber(report.min, "Min should be a number.");
             Assert.isNumber(report.avg, "Average should be a number.");        
@@ -359,7 +361,9 @@ YAHOO.test.profiler_test = (function(){
             Profiler.unregisterFunction("testObject.factorial");
 
             Assert.isObject(report, "Report should be an object.");
-            Assert.areEqual(10, report.calls, "Report.calls is incorrect.");
+            
+            //intentional failure
+            Assert.areEqual(11, report.calls, "Report.calls is incorrect.");
             Assert.areEqual(10, callCount, "Call count is incorrect.");
       
         },
