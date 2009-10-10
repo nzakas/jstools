@@ -1,0 +1,19 @@
+FireUnit Extension for YUI Test (YUI 3) v0.2
+Copyright 2008-2009 Nicholas C. Zakas. All Rights Reserved.
+Licensed under a BSD License (see source code file)
+
+Basic Usage:
+1) Include test.js and your source code to test.
+2) Include test-fireunit.js
+3) Add the following line of code to your file:
+
+    Y.FireUnit.attach();
+    
+4) Run your tests:
+
+    Y.Test.Runner.run();
+        
+History:
+
+0.2
+  * Initial release for YUI 3.
